@@ -10,12 +10,12 @@ pipeline {
         }
       }
     }
-    stage('Install Project') {
-      steps {
-        dir("build") {
-          sh("make install")
-        }
-      }
-    }
+//     stage('Install Project') {
+//       steps {
+//         dir("build") {
+//           sh("make install")
+//         }
+//       }
+//     }
   }
 }

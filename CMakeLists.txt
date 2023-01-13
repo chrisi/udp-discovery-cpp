@@ -69,3 +69,8 @@ if(BUILD_TEST)
 	set_property(TARGET udp-discovery-peer-e2e-test PROPERTY CXX_STANDARD 98)
 	add_test(udp-discovery-peer-e2e-test udp-discovery-peer-e2e-test)
 endif()
+
+#set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "udp_discovery_peer.hpp;udp_discovery_ip_port.hpp;udp_discovery_protocol.hpp;udp_discovery_peer_parameters.hpp;udp_discovery_protocol_version.hpp;udp_discovery_discovered_peer.hpp")
+#
+#install(TARGETS ${PROJECT_NAME}
+#		PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_PREFIX}/include/discovery")
