@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.16)
 
 project(udp-discovery VERSION 1.0.0)
 
-set(CMAKE_INSTALL_PREFIX "$ENV{GTI_CMAKE_REPO}")
-
 option(BUILD_EXAMPLE "Build example application." OFF)
 option(BUILD_TOOL "Build udp-discovery-tool application." OFF)
 option(BUILD_TEST "Build test." ON)
