@@ -1,51 +1,57 @@
 # Local network UDP discovery for C++
 
-![Unit tests](https://github.com/truvorskameikin/udp-discovery-cpp/actions/workflows/unit_tests.yml/badge.svg?branch=master) ![E2E tests](https://github.com/truvorskameikin/udp-discovery-cpp/actions/workflows/e2e_tests.yml/badge.svg?branch=master)
+![Build Status](https://jenkins.gtidev.net/buildStatus/icon?job=udp-discovery)
 
 A small library to add local network discovery feature to your C++ programs with no dependencies
 
-#### Table of content
-
-[Users](#users)
-
-[How to build](#how_to_build)
-
-[How to use](#how_to_use)
-
-[Example program](#example_program)
-
-[Discovery tool](#discovery_tool)
-
-<a name="users"/>
-
-## Users
-
-For the list of **udp-discovery-cpp** library users please refer to [USERS.md](USERS.md) document.
-
-<a name="how_to_build"/>
-
 ## How to build
 This library uses [CMake](https://cmake.org/) to build static library, examples and tools. To build all targets do:
-<pre>
+```shell
 cd udp-discovery-cpp
 mkdir build
 cd build
 cmake -DBUILD_EXAMPLE=ON -DBUILD_TOOL=ON ..
 make
-</pre>
+```
 
 Also it is possible to just add implementation files to a project and use the build system of that project:
-<pre>
+```c++
 udp_discovery_peer.cpp
 udp_discovery_ip_port.cpp
 udp_discovery_protocol.cpp
-</pre>
+```
 
 This library has no dependencies.
 
-<a name="how_to_use"/>
+## How to install
+
+execute the following command from withing the project output directory
+
+```shell
+sudo cmake -DCMAKE_INSTALL_PREFIX=/home/chrisi/libs --install ./
+```
+
+If you are building/installing from the IDE using the **Build -> Install** menu entry,
+make sure you have set CMAKE_INSTALL_PREFIX to the correct location in the CMake Profiles.
+
+![](docs/cmake_settings.png)
+
+## How to package
+
+assuming you execute the packaging from the IDEs standard build output directories
+
+```shell
+cd cmake-build-release && cpack
+```
 
 ## How to use
+
+In the **CMakeLists.txt** the following lines must be included
+
+```cmake
+find_package(udp_discovery REQUIRED)
+target_link_libraries(${PROJECT_NAME} gtidev::udp_discovery ...)
+```
 
 The example program **udp-discovery-example** can be a very good reference on how to use this library. It uses 12021 as port and 7681412 as application id, these values users of *udp-discovery-cpp* library should decide on.
 
@@ -120,8 +126,6 @@ commands are: help, user_data, exit
 
 *user_data* command changes user data associated with this peer.
 *exit* command exits the **udp-discovery-example** gracefully sending *kPacketIAmOutOfHere* packet.
-
-<a name="discovery_tool"/>
 
 ### Discovery tool
 
